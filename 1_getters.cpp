@@ -21,7 +21,17 @@ public:
     return this->height;
   }
 
-  int area()
+  void set_width(int w)
+  {
+    this->width = w;
+  }
+
+  void set_height(int h)
+  {
+    this->height = h;
+  }
+ 
+int area()
   {
     return this->width * this->height;
   }
@@ -34,6 +44,17 @@ Rectangle scale(Rectangle rectangle, int factor)
   return Rectangle(width, height);
 }
 
+Rectangle swap(Rectangle rectangle)
+{
+ int temp_width = rectangle.get_width();
+  int temp_height = rectangle.get_height();
+  
+  rectangle.set_width(temp_height);
+  rectangle.set_height(temp_width);
+
+  return rectangle;
+}
+
 int main()
 {
   Rectangle r1(2, 3);
@@ -41,5 +62,9 @@ int main()
 
   Rectangle r2 = scale(r1, 2);
   cout << "Area of Rectangle 2: " << r2.area() << endl;
+
+  Rectangle r3 = swap(r1);
+  cout << "After swap, area of Rectangle 3: " << r3.area() << endl;
+  
   return 0;
 }
